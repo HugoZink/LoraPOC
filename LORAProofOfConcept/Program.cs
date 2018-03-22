@@ -9,6 +9,7 @@ using uhttpsharp.Listeners;
 using uhttpsharp;
 using uhttpsharp.RequestProviders;
 using System.Net.Sockets;
+using LORAProofOfConcept.Core;
 
 namespace LORAProofOfConcept
 {

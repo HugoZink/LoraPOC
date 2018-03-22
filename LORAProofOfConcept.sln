@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LORAProofOfConcept", "LORAProofOfConcept\LORAProofOfConcept.csproj", "{A1BEA9F3-3C8D-4E1D-A132-BB8A0B21673A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LORAProofOfConceptServer", "LORAProofOfConcept\LORAProofOfConceptServer.csproj", "{A1BEA9F3-3C8D-4E1D-A132-BB8A0B21673A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LORAProofOfConceptClient", "LORAProofOfConceptClient\LORAProofOfConceptClient.csproj", "{E6915A15-30EB-4C7F-826A-6B6C86E71FEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LORAProofOfConceptCore", "LORAProofOfConceptCore\LORAProofOfConceptCore.csproj", "{7FC1409A-7445-43DD-8C53-A46CE4876CEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{A1BEA9F3-3C8D-4E1D-A132-BB8A0B21673A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1BEA9F3-3C8D-4E1D-A132-BB8A0B21673A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1BEA9F3-3C8D-4E1D-A132-BB8A0B21673A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6915A15-30EB-4C7F-826A-6B6C86E71FEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6915A15-30EB-4C7F-826A-6B6C86E71FEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6915A15-30EB-4C7F-826A-6B6C86E71FEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6915A15-30EB-4C7F-826A-6B6C86E71FEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FC1409A-7445-43DD-8C53-A46CE4876CEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FC1409A-7445-43DD-8C53-A46CE4876CEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FC1409A-7445-43DD-8C53-A46CE4876CEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FC1409A-7445-43DD-8C53-A46CE4876CEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

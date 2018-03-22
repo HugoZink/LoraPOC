@@ -7,6 +7,7 @@ using uhttpsharp;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
+using LORAProofOfConcept.Core;
 
 namespace LORAProofOfConcept
 {

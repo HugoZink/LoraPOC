@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LORAProofOfConcept
+namespace LORAProofOfConcept.Core
 {
-	class GarbageBin
+	public class GarbageBin
 	{
 		public string ID { get; set; }
 
