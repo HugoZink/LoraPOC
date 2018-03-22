@@ -12,6 +12,7 @@ using System.Net.Sockets;
 using LORAProofOfConcept.Core.Model;
 using LORAProofOfConcept.Core.Repository;
 using LORAProofOfConcept.Server.Repository;
+using LORAProofOfConcept.Server.Services;
 
 namespace LORAProofOfConcept.Server
 {
@@ -19,9 +20,7 @@ namespace LORAProofOfConcept.Server
 	{
 		static void Main(string[] args)
 		{
-			IGarbageBinRepository binRepository = RepositoryFactory.GetRepository();
-
-			var handler = new LoraRequestHandler(binRepository);
+			var handler = new LoraRequestHandler();
 
 			using (var httpServer = new HttpServer(new HttpRequestProvider()))
 			{

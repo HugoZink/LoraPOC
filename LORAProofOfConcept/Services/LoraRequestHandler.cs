@@ -9,16 +9,17 @@ using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using LORAProofOfConcept.Core.Model;
 using LORAProofOfConcept.Core.Repository;
+using LORAProofOfConcept.Server.Repository;
 
-namespace LORAProofOfConcept.Server
+namespace LORAProofOfConcept.Server.Services
 {
 	class LoraRequestHandler
 	{
 		private IGarbageBinRepository _repository;
 
-		public LoraRequestHandler(IGarbageBinRepository repository)
+		public LoraRequestHandler()
 		{
-			this._repository = repository;
+			this._repository = RepositoryFactory.GetRepository();
 		}
 
 		public void HandleRequest(IHttpContext context)
