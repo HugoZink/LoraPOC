@@ -7,17 +7,18 @@ using uhttpsharp;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
-using LORAProofOfConcept.Core;
+using LORAProofOfConcept.Core.Model;
+using LORAProofOfConcept.Core.Repository;
 
-namespace LORAProofOfConcept
+namespace LORAProofOfConcept.Server
 {
 	class LoraRequestHandler
 	{
-		private Dictionary<string, GarbageBin> _bins;
+		private IGarbageBinRepository _repository;
 
-		public LoraRequestHandler(Dictionary<string, GarbageBin> bins)
+		public LoraRequestHandler(IGarbageBinRepository repository)
 		{
-			this._bins = bins;
+			this._repository = repository;
 		}
 
 		public void HandleRequest(IHttpContext context)
@@ -40,7 +41,7 @@ namespace LORAProofOfConcept
 
 		private void HandleBinOverview(IHttpContext context)
 		{
-			string json = JsonConvert.SerializeObject(this._bins);
+			string json = JsonConvert.SerializeObject(this._repository.GetGarbageBins());
 			context.Response = new HttpResponse(HttpResponseCode.Ok, json, false);
 		}
 
@@ -52,7 +53,7 @@ namespace LORAProofOfConcept
 			var bin = JsonConvert.DeserializeAnonymousType(json, binDefinition);
 
 			var garbageBin = new GarbageBin(bin.Latitude, bin.Longitude, bin.Capacity);
-			_bins.Add(garbageBin.ID, garbageBin);
+			this._repository.Save(garbageBin);
 
 			context.Response = new HttpResponse(HttpResponseCode.Ok, JsonConvert.SerializeObject(garbageBin), false);
 
@@ -62,16 +63,7 @@ namespace LORAProofOfConcept
 		private void HandleBinUpdate(IHttpContext context)
 		{
 			var binID = context.Request.RequestParameters[0];
-			GarbageBin bin;
-
-			if(_bins.ContainsKey(binID))
-			{
-				bin = _bins[binID];
-			}
-			else
-			{
-				throw new InvalidOperationException($"Bin with ID ${binID} could not be found!");
-			}
+			GarbageBin bin = this._repository.GetGarbageBin(binID);
 
 			var definition = new { ID = "", CurrentCapacity = 0 };
 			var json = Encoding.ASCII.GetString(context.Request.Post.Raw);

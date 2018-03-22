@@ -1,4 +1,4 @@
-﻿using LORAProofOfConcept.Core;
+﻿using LORAProofOfConcept.Core.Model;
 using LORAProofOfConceptClient.Services;
 using System;
 using System.Collections.Generic;

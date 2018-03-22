@@ -9,17 +9,19 @@ using uhttpsharp.Listeners;
 using uhttpsharp;
 using uhttpsharp.RequestProviders;
 using System.Net.Sockets;
-using LORAProofOfConcept.Core;
+using LORAProofOfConcept.Core.Model;
+using LORAProofOfConcept.Core.Repository;
+using LORAProofOfConcept.Server.Repository;
 
-namespace LORAProofOfConcept
+namespace LORAProofOfConcept.Server
 {
 	class Program
 	{
 		static void Main(string[] args)
 		{
-			var bins = new Dictionary<string, GarbageBin>();
+			IGarbageBinRepository binRepository = RepositoryFactory.GetRepository();
 
-			var handler = new LoraRequestHandler(bins);
+			var handler = new LoraRequestHandler(binRepository);
 
 			using (var httpServer = new HttpServer(new HttpRequestProvider()))
 			{

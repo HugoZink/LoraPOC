@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LORAProofOfConcept.Core
+namespace LORAProofOfConcept.Core.Model
 {
 	public class GarbageBin
 	{
