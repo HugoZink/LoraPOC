@@ -27,13 +27,14 @@ namespace LORAProofOfConcept
 
 				// Request handling : 
 				httpServer.Use((context, next) => {
-					Console.WriteLine("Got Request!");
+					Console.WriteLine("Incoming HTTP request");
 
 					handler.HandleRequest(context);
 
 					return next();
 				});
 
+				// Workaround for null reference exceptions when not enough handlers are registered
 				httpServer.Use((context, next) => Task.Factory.GetCompleted());
 
 				httpServer.Start();

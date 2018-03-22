@@ -10,14 +10,14 @@ namespace LORAProofOfConcept.Core
 	{
 		public string ID { get; set; }
 
-		public string Latitude { get; private set; }
+		public string Latitude { get; set; }
 
-		public string Longitude { get; private set; }
+		public string Longitude { get; set; }
 
 		/// <summary>
 		/// The maximum volume that this bin can hold.
 		/// </summary>
-		public int MaxCapacity { get; private set; }
+		public int MaxCapacity { get; set; }
 
 		/// <summary>
 		/// The volume that this bin currently holds.
