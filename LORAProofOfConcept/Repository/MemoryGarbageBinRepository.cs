@@ -8,7 +8,7 @@ using LORAProofOfConcept.Core.Repository;
 
 namespace LORAProofOfConcept.Server.Repository
 {
-	class MemoryGarbageBinRepository : IGarbageBinRepository
+	public class MemoryGarbageBinRepository : IGarbageBinRepository
 	{
 		private Dictionary<string, GarbageBin> bins;
 
