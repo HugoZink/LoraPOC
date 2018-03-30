@@ -20,6 +20,8 @@ namespace LORAProofOfConcept.Server.Services
 		public LoraRequestHandler()
 		{
 			this._repository = RepositoryFactory.GetRepository();
+
+			this.InsertTestData();
 		}
 
 		public void HandleRequest(IHttpContext context)
@@ -34,6 +36,9 @@ namespace LORAProofOfConcept.Server.Services
 					break;
 				case HttpMethods.Put:
 					this.HandleBinUpdate(context);
+					break;
+				case HttpMethods.Delete:
+					this.HandleBinDelete(context);
 					break;
 				default:
 					throw new InvalidOperationException("Unsupported HTTP request!");
@@ -76,6 +81,45 @@ namespace LORAProofOfConcept.Server.Services
 			context.Response = new HttpResponse(HttpResponseCode.Ok, JsonConvert.SerializeObject(bin), false);
 
 			Console.WriteLine("Updated bin");
+		}
+
+		private void HandleBinDelete(IHttpContext context)
+		{
+			var binID = context.Request.RequestParameters[0];
+			GarbageBin bin = this._repository.GetGarbageBin(binID);
+
+			this._repository.Delete(bin);
+
+			context.Response = new HttpResponse(HttpResponseCode.Ok, JsonConvert.SerializeObject(bin), false);
+
+			Console.WriteLine("Deleted bin");
+		}
+
+		/// <summary>
+		/// Inserts sample test data into the repository.
+		/// </summary>
+		private void InsertTestData()
+		{
+			var random = new Random();
+
+			// Insert random bins into the repository.
+			for(int i = 0; i < 4; i++)
+			{
+				string lat = random.Next(0, 50).ToString();
+				string lon = random.Next(0, 50).ToString();
+
+				var bin = new GarbageBin(lat, lon, 100);
+				bin.CurrentCapacity = random.Next(0, 100);
+				this._repository.Save(bin);
+			}
+
+			// Insert one more garbage bin that is always 90% full.
+			string fullLat = random.Next(0, 50).ToString();
+			string fullLon = random.Next(0, 50).ToString();
+
+			var fullBin = new GarbageBin(fullLat, fullLon, 100);
+			fullBin.CurrentCapacity = 90;
+			this._repository.Save(fullBin);
 		}
 	}
 }
