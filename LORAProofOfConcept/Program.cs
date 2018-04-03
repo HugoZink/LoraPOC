@@ -24,7 +24,7 @@ namespace LORAProofOfConcept.Server
 
 			using (var httpServer = new HttpServer(new HttpRequestProvider()))
 			{
-				httpServer.Use(new TcpListenerAdapter(new TcpListener(IPAddress.Loopback, 80)));
+				httpServer.Use(new TcpListenerAdapter(new TcpListener(IPAddress.Loopback, 3000)));
 
 				// Request handling : 
 				httpServer.Use((context, next) => {

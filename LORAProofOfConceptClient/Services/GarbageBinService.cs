@@ -13,7 +13,7 @@ namespace LORAProofOfConceptClient.Services
 {
 	public class GarbageBinService
 	{
-		private const string remote = "http://127.0.0.1";
+		private const string remote = "http://127.0.0.1:3000";
 
 		public async Task<List<GarbageBin>> GetGarbageBins()
 		{
